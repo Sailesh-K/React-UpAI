@@ -16,7 +16,7 @@ function DataForm() {
     config: { duration: 500 },
   });
 
-  // Track changes in the form
+  
   useEffect(() => {
     const originalValues = { name: "", address: "", phone: "", email: "" };
     const currentValues = { name, address, phone, email };
@@ -27,12 +27,12 @@ function DataForm() {
     setIsFormDirty(hasChanges);
   }, [name, address, phone, email]);
 
-  // Warn the user about unsaved changes before closing the browser/tab
+  
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       if (isFormDirty) {
         e.preventDefault();
-        e.returnValue = ""; // Required for the dialog to appear
+        e.returnValue = ""; 
       }
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -44,9 +44,7 @@ function DataForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name, address, phone, email });
-
-    // Reset the form and mark it as clean
+    console.log({ name, address, phone, email });    
     setName("");
     setAddress("");
     setPhone("");
